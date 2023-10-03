@@ -1,0 +1,558 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,400&display=swap");
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    /**/
+    background: #2f3e46;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/*|| navbar*/
+nav{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #354f52;
+    border-bottom: 2px solid #84a98c;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+/*|| sign in container*/
+main{
+    margin-top: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signin-form{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 500px;
+    padding: 10px 20px;
+    background-color: #354f52;
+    border-radius: 4px;
+}
+.form-title{
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.form-title h1{
+    font-size: 30px;
+}
+.signin-form input{
+    width: 100%;
+    margin: 5px 0;
+    padding: 4px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 4px;
+    outline: none;
+}
+
+#id_username,
+#id_password,
+#id_email{
+    border: none;
+}
+
+.form-btn-primary{
+    background-color: transparent;
+    border: 1px solid #cad2c5;
+    color: #cad2c5;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+
+.form-btn-primary:hover{
+    transition: all 0.4s ease-in-out;
+    background: #cad2c5;
+    color: #000;
+
+}
+.form-btn-primary i{
+    vertical-align: middle;
+    margin-left: 6px;
+}
+.signup-forward{
+    padding: 10px 0;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+    color: #cad2c5;
+}
+
+.signup-forward a {
+    color: #0a9396;
+}
+
+.signup-forward div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.signup-forward hr{
+    width: 180px;
+    height: 0.2px;
+    margin: 0 5px;
+}
+.signup-forward p {
+    margin-top: 20px;
+}
+
+.signin-info{
+    margin-top: 50px;
+    border-radius: 4px;
+    padding: 15px;
+    width: 500px;
+    border: 1px solid #fff;
+    background: #e63946;
+    color: #fff;
+    text-align: start;
+}
+/*|| dashboard container*/
+.dashboard-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+
+/*|| main container*/
+.main-container{
+    margin-top: 65px;
+    grid-column: 4 / span 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+/*|| exp/inc box*/
+.exp-inc-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    padding:  0 30px;
+    margin-top: 40px;
+}
+.inc-box ,.exp-box, .curr-box{
+    background: #52796f;
+    border-radius: 4px;
+    padding: 5px;
+    width: auto;
+}
+.curr-box{
+    text-align: center;
+    width: 110px;
+}
+.inc-box > div,
+.exp-box > div{
+    display: flex;
+    align-items: center;
+}
+.inc-box strong,
+.exp-box strong{
+    font-size: 25px;
+}
+.inc-box img,
+.exp-box img{
+    margin-left: 8px;
+}
+/*|| chart container*/
+.chart-container{
+    margin: 30px 0;
+    width: 700px;
+    height: 350px;
+    padding: 0 20px;
+
+}
+.chart-container canvas{
+    width: 700px;
+    height: 350px;
+}
+/*|| navspan*/
+.nav-span{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 700px;
+    color: #cad2c5;
+}
+
+.nav-span a{
+    border: dashed 1px #cad2c5;
+    color: #cad2c5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: transparent;
+    border-radius: 4px;
+    transition: 0.2s all ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+}
+.nav-span a:hover{
+    background: #cad2c5;
+    color: #000;
+    transition: 0.2s all ease-in-out;
+   border: 1px solid #cad2c5; 
+}
+
+
+
+.nav-span i{
+    vertical-align: middle;
+    margin-left: 5px;
+}
+/*|| search bar*/
+.search-bar{
+    width: 700px;
+    margin: 20px 0;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: calc(100% - 105px);
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+}
+
+.search-bar button{
+    display: flex;
+    align-items: center;
+    width: 100px;
+    border-radius: 4px;
+    border: 1px solid #cad2c5;
+    padding: 8px;
+    margin-left: 5px;
+    background: transparent;
+    color: #cad2c5;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.2s all ease-in-out;
+    cursor: pointer;
+}
+
+.search-bar button:hover{
+    transition: 0.2s all ease-in-out;
+    background-color: #cad2c5;
+    color: #000;
+}
+.search-bar i {
+    margin-left: 7px;
+}
+
+/*|| export pdf/csv*/
+.summary-links{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+.summary-links > div{
+    width: 100%;
+    margin: 5px 0;
+}
+
+.summary-title{
+    text-align: start;
+}
+.summary-btn{
+    padding: 5px 0;
+    overflow: hidden;
+
+}
+.summary-links a{
+    padding: 5px;
+    text-decoration: none;
+    border: 1px solid #52b788;
+    color: #52b788;
+    cursor: pointer;
+    border-radius: 4px;
+}
+/*|| transaction list*/
+.tran-list{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 700px;
+    color: #000;
+    padding: 20px;
+}
+.tran-list > div:nth-child(even){
+    background: #495057;
+    color: #fff;
+}
+.tran-list > div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #cad2c5;
+    border-bottom: 1px solid #000;
+}
+
+.tran-list > div > div{
+    flex: 1;
+    padding: 10px ;
+    
+}
+.tran-list i {
+    vertical-align: middle;
+    font-size: 30px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.tran-btn a{
+    text-align: none;
+    color: inherit;
+}
+#delete_icon{
+    color: #e63946;
+}
+#edit_icon{
+    color: #52b788;
+}
+.empty-message{
+    background-color: #e63946;
+    color: #000;
+    width: 700%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*|| side bar*/
+.side-bar{
+    border-right: 2px solid #84a98c;
+    grid-column: 1 / span 3;
+    background: #354f52;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.user-card{
+    position: sticky;
+    top: 120px;
+    margin-top: 120px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+  
+}
+
+.user-card img{
+    width: 80px;
+    height: 80px;
+}
+.user-card ul{
+    margin-top: 20px;
+    width: 50%;
+    overflow: hidden;
+}
+.user-card p {
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-decoration: underline;
+}
+.user-card li {
+    cursor: pointer;
+}
+.user-card i {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.user-card a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/*|| new transaction page*/
+.transaction-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.transaction-form{
+    width: 700px;
+    padding: 20px;
+    background: #52796f;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+.transaction-form input{
+    margin: 10px 0;
+    width: 100%;
+    padding: 7px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 4px;
+    outline: none;
+}
+.transaction-form select{
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+.transaction-form option{
+    margin: 10px 0;
+}
+#id_desc,
+#id_amount,
+#id_transac_type{
+    border: none;
+}
+/*|| signup container*/
+.signup-container{
+    margin-top: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.signup-form {
+    width: 500px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    padding: 20px;
+    background:#354f52;
+    border-radius: 4px;
+}
+
+.signup-title{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    
+}
+
+.signup-form h1{
+    font-size: 30px;
+}
+
+.signup-form input{
+    outline: none;
+    width: 100%;
+    padding: 4px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin: 5px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+#id_password1,
+#id_password2{
+    border: none;
+}
+/*|| custom page for changing password*/
+.custom-container{
+    margin-top: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.custom-title{
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 ;
+}
+.custom-form{
+    margin-top: 30px;
+    width: 500px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 4px;
+    background: #354f52;
+}
+.custom-form input{
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    margin: 7px 0;
+    border-radius: 4px;
+}
+#id_current_password,
+#id_new_password,
+#id_new_password_confirmation{
+    border: none;
+}
+
+/*|| */
+/*|| */
+/*|| */
+/*|| */
+/*|| */
+/*|| */
+/*|| */
+/*|| */
+/*|| */
+/*|| */

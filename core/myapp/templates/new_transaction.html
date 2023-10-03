@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block  title %}
+<title>DataNexa | New Transaction</title>
+{% endblock  %}
+{% block content%}
+<div class="transaction-container">
+    <form action="/new_transaction/" class="transaction-form" method="POST">
+        <div class="transaction-title">
+            <h1>Add new Transation here.</h1>
+        </div>
+            {% csrf_token %}
+            {{tran_form}}
+            <input type="submit" value="Add new transaction" class="form-btn-primary">
+    </form>
+</div>
+{% endblock %}

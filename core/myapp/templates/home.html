@@ -1,0 +1,237 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+  <title>DataNexa | Home</title>
+{% endblock %}
+
+{% block content %}
+  <!-- dashboard container -->
+  <div class="dashboard-container" >
+    <!-- sidebar -->
+    <div class="side-bar">
+      <div class="user-card">
+        <ul>
+          <img src="http://127.0.0.1:8000/static{{ user.avatar.url }}" alt="user-avatar" />
+          <p>Menu</p>
+          <li style="text-transform: uppercase;">
+            <i class="fa-solid fa-user"></i> @{{ user.username }}
+          </li>
+          <li>
+            <a href="{% url "change_password" %}"><i class="fa-solid fa-pen-to-square"></i> Edit password</a>
+          </li>
+          <li>
+            <a href="{% url 'logout'%}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+          </li>
+        </ul>
+
+        <ul>
+          <p>Reports and Analytics</p>
+          <a href="#"><i class="fa-solid fa-chart-simple"></i>exp/inc Summary</a>
+        </ul>
+      </div>
+    </div>
+    <!-- main section -->
+    <div class="main-container">
+      <!-- income/expense box -->
+      <div class="exp-inc-box">
+        <div class="inc-box">
+          <p>Income</p>
+          <div>
+            <strong>{{total_inc}}$</strong>
+            <img src="{% static 'image/increase.png' %}" alt="increase" />
+          </div>
+        </div>
+        <div class="exp-box">
+          <p>Expense</p>
+          <div>
+            <strong>{{total_exp}}$</strong>
+            <img src="{% static 'image/decrease.png' %}" alt="decrease" />
+          </div>
+        </div>
+        <div class="curr-box">
+          <img src="{% static 'image/dollar.png' %}" alt="dollar" />
+        </div>
+      </div>
+      <!-- chart container -->
+      <div class="chart-container">
+        <canvas id="bar-chart" class="bar"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="bar-chartt" class="bar"></canvas>
+      </div>
+      <!-- search bar -->
+    
+        <form method="get" class="search-bar">
+          {% csrf_token %}
+          {{query_form}}
+          <button type="submit">Seach <i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+   
+      <!-- nav span -->
+      <div class="nav-span">
+        <p>Latest Transactions</p>
+        
+        <a class="new-op-btn" href="{% url "new_transaction" %}">New transaction <i class="material-icons">add_circle</i></a>
+        <p class="date_today"></p>
+      </div>
+      <div class="summary-links">
+        <div class="summary-title">
+          <h3>Export your data</h3>
+        </div>
+        <div class="summary-btn">
+          <a href="{% url "transaction_csv" %}">Export CSV file</a>
+        <a href="{% url "transaction_pdf" %}">Export PDF file</a>
+        </div>
+      </div>
+      <!-- transactions list -->
+      <div class="tran-list">
+        <div class="nav-tran-list">
+          <div>
+            <p>Description</p>
+          </div>
+          <div>
+            <p>Amount</p>
+          </div>
+          <div>
+            <p>Date</p>
+          </div>
+          <div>
+            <p>Category</p>
+          </div>
+          <div>
+            <p>Action</p>
+          </div>
+        </div>
+        <!-- data flow here -->
+        {% for t in transactions %}
+          <div class="data-flow-tran-list">
+            <div>
+              <p>{{ t.desc }}</p>
+            </div>
+            <div>
+              <p>${{ t.amount }}</p>
+            </div>
+            <div>
+              <p>{{ t.date_pub }}</p>
+            </div>
+            <div>
+              {% if t.transac_type == 'INCOME' %}
+              <i class="material-icons" style="color: #52b788;">arrow_circle_up</i>
+              {%else%}
+              <i class="material-icons" style="color: #e63946;">arrow_circle_down</i>
+              {% endif %}
+            </div>
+            <div class="tran-btn">
+              <a href="{% url "edit_transaction" t.desc %}"><i class="material-icons" id="edit_icon">edit</i></a>
+              <a href="{% url "delete_transaction" t.desc %}"><i class="material-icons" id="delete_icon">delete</i></a>
+            </div>
+          </div>
+        {% endfor %}
+        <!--message empty-->
+        {% if message is not None %}
+        <div class="empty-message">
+          {{ message }}
+        </div>
+        {% endif %}
+        <!--  -->
+      </div>
+
+      <!--  -->
+    </div>
+  </div>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const ctx = document.getElementById('bar-chart')
+    const cty = document.getElementById('bar-chartt')
+    //fetching data api
+   
+
+    var url = '/data_flow/'
+    fetch(url,{
+      method:'GET',
+      headers:{
+        'Content-Type':'applicaiton/json',
+      }, 
+    })
+    .then((res)=> res.json())
+    .then((data)=>{
+      localStorage.setItem('data',JSON.stringify(data))
+    })
+
+
+    let data = JSON.parse(localStorage.getItem('data'))
+    console.log(data)
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.desc_exp ? data.desc_exp : ['a','b','c','d'],
+        datasets: [
+          {
+            label: 'Expense',
+            data: data.exp_list ?  data.exp_list: [0,0,0,0],
+            borderWidth: 2,
+            borderColor: 'rgba(230, 57, 70, 1)',
+          },
+          
+        ]},
+      options: {
+        responsive:true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    })
+    //income chart
+    new Chart(cty, {
+      type: 'line',
+      data: {
+        labels: data.desc_inc ? data.desc_inc : ['a','b','c','d'],
+        datasets: [
+          {
+            label: 'Income',
+            data: data.inc_list ?  data.inc_list: [0,0,0,0],
+            borderWidth: 2,
+            borderColor: 'rgba(82, 183, 136, 1)',
+          },
+          
+        ]},
+      options: {
+
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    })
+
+    /*
+    {
+            labels: data.desc_inc,
+            label: 'Income',
+            data: data.inc_list ,
+            borderWidth: 1,
+            borderColor: 'rgba(82, 183, 136, 1)',
+          }
+    */
+    
+    // Date object
+    const date = new Date()
+    
+    let currentDay = String(date.getDate()).padStart(2, '0')
+    
+    let currentMonth = String(date.getMonth() + 1).padStart(2, '0')
+    
+    let currentYear = date.getFullYear()
+    
+    // we will display the date as DD-MM-YYYY
+    
+    let currentDate = `${currentDay}/${currentMonth}/${currentYear}`
+    document.querySelector('.date_today').innerHTML += currentDate
+  </script>
+{% endblock %}

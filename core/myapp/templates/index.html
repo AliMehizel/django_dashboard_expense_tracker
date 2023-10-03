@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% block title %}
+      <title>DataNexa | Sign in</title>
+    {% endblock %}
+  </head>
+  <body >
+    <!-- Navbar -->
+    <nav>
+      <h1>DataNexa</h1>
+    </nav>
+    
+    {% block content %}
+    <!-- sign in container -->
+      <main>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="signin-info">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <form action="/" class="signin-form" method="POST">
+          <div class="form-title">
+            <h1>Sign in to your account</h1>
+          </div>
+          {% csrf_token %}
+          {{ signin_form }}
+          <input type="submit" class="form-btn-primary" value="Signin" />
+          
+          <div class="signup-forward">
+            <div>
+              <hr />OR<hr />
+            </div>
+            <p>
+              Create a <a href="{% url "signup" %}">new account !</a>
+            </p>
+            <p>or <a href="">Reset your password !</a></p>
+          </div>
+        </form>
+      </main>
+    {% endblock %}
+    <script src="https://kit.fontawesome.com/8f18067226.js" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -27,3 +27,4 @@ Technologies used in the project:
 *   Django-rest-framework
 *   HTML & CSS
 *   ReportLab pdf
+*   Chart js

@@ -124,8 +124,8 @@ def home(request):
         
     if tran_list.exists():
         
-        total_inc: float = 0
-        total_exp: float = 0        
+        total_inc = 0
+        total_exp = 0        
         for tran in tran_list:
             if tran.transac_type == 'INCOME':
                 total_inc += tran.amount

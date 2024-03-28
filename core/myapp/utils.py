@@ -10,8 +10,8 @@ def create_plot(request):
     
     transaction_list = Transaction.objects.filter(user=request.user).all()
     if transaction_list.count() > 1:
-        x:list = []
-        y:list = []
+        x = []
+        y = []
         data = [
             ['Description','Amount','Category','Date'],
         ]
@@ -21,8 +21,8 @@ def create_plot(request):
                 y.append(transaction.amount)
       
     else:
-        x:list = []
-        y:list = []
+        x = []
+        y  = []
     
 
     # Create a bar plot

@@ -152,10 +152,10 @@ def get_transaction_amount(request):
     
     if request.user.is_authenticated:
         tran_list = Transaction.objects.filter(user=request.user).all()
-        exp_list:list = []
-        inc_list:list = [] 
-        desc_inc:list = []
-        desc_exp:list = []
+        exp_list = []
+        inc_list = [] 
+        desc_inc = []
+        desc_exp = []
         if tran_list.exists():
             for tran in tran_list:
                 
@@ -306,19 +306,4 @@ def transactions_pdf(request):
 
 
 
-""" 
--login === done
--transaction list with sums === done
--logout === done
--data display chart api  === done
--addn new transaction === done
--delete transaction === done
--update a transaction == done
--csv generating == done
--signup == done
--pdf generating (mathplotlib)
--search for transaction 
--reset password
--the messages error don't forget to be perfecto wahda biwahida
--responsive design
-"""
+

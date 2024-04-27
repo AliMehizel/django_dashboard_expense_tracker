@@ -28,6 +28,6 @@ Technologies used in the project:
 *   HTML & CSS
 *   ReportLab pdf
 *   Chart js
-<img src="https://github.com/AliMehizel/django_dashboard_expense_tracker/blob/main/screencapture-expense-income-tracker-dashboard-vue3-vercel-app-2023-09-27-14_43_21.png" width="70%"></img>
+<img src="https://github.com/AliMehizel/django_dashboard_expense_tracker/blob/main/screencapture-expense-income-tracker-dashboard-vue3-vercel-app-2023-09-27-14_43_21.png" ></img>
 
-<img src="https://github.com/AliMehizel/django_dashboard_expense_tracker/blob/main/screencapture-expense-income-tracker-dashboard-vue3-vercel-app-2023-09-27-14_43_57.png" width="70%"></img> 
+<img src="https://github.com/AliMehizel/django_dashboard_expense_tracker/blob/main/screencapture-expense-income-tracker-dashboard-vue3-vercel-app-2023-09-27-14_43_57.png"></img> 
